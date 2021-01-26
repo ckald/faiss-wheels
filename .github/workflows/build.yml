@@ -32,6 +32,7 @@ jobs:
           - true
         opt:
           - 'generic'
+          - 'avx2'
     env:
       FAISS_ENABLE_GPU: 'OFF'
       CUDA_VERSION: '10.0'
