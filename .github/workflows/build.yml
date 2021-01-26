@@ -11,7 +11,7 @@ on:
     types: [created]
 env:
   SWIG_VERSION: '4.0.2'
-  NUMPY_VERSION: '1.18.0'
+  NUMPY_VERSION: '1.18.1'
   FAISS_OPT_LEVEL: generic
   FAISS_LIBRARY_SUFFIX: ''
   TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
@@ -23,13 +23,13 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - cp36-cp36m
-          - cp37-cp37m
+#          - cp36-cp36m
+#          - cp37-cp37m
           - cp38-cp38
-          - cp39-cp39
+#          - cp39-cp39
         cuda:
           - false
-          - true
+#          - true
         opt:
           - 'generic'
           - 'avx2'
@@ -131,7 +131,14 @@ jobs:
       run: |
         pip install --no-cache-dir twine
         twine upload --skip-existing dist/*
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: wheelhouse
+        path: |
+          dist/faiss*.whl
   build-mac:
+    if: false
     runs-on: macos-latest
     env:
       BUILD_TESTING: 'ON'
@@ -202,6 +209,7 @@ jobs:
         twine upload --skip-existing dist/*
   build-win:
     runs-on: windows-latest
+    if: false
     strategy:
       matrix:
         python-version:
