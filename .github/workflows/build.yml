@@ -134,7 +134,7 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: wheelhouse
+        name: wheelhouse/${{ env.FAISS_OPT_LEVEL }}
         path: |
           dist/faiss*.whl
   build-mac:
