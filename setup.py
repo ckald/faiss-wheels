@@ -4,7 +4,7 @@ from setuptools.command.build_py import build_py
 import sys
 import os
 
-NAME = 'faiss-cpu'
+NAME = 'faiss-cpu-prophy'
 VERSION = '1.6.5'
 
 LONG_DESCRIPTION = """
